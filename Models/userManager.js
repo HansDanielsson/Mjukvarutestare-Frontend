@@ -1,6 +1,6 @@
 const User = require('./user')
 
-async function createUser( userName, password ) {
+async function createUser (userName, password) {
   try {
     const user = new User({ userName, password })
     await user.save()
@@ -10,9 +10,8 @@ async function createUser( userName, password ) {
   }
 }
 
-function loginUser( userName, password ) {
+function loginUser (userName, password) {
   // Implement login logic here
-  // 
   console.log('User logged in successfully!')
 }
 
