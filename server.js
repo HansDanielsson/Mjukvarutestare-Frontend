@@ -1,11 +1,11 @@
 // Fil för attt hantera Express server
-const express = require('express')
+const Express = require('express')
 const bodyParser = require('body-parser')
 
 const portNr = 5000
 
 // Konfigurera server med Body-parser
-const application = new express()
+const application = new Express()
 application.use(bodyParser.json())
 application.use(bodyParser.urlencoded({ extended: false }))
 
