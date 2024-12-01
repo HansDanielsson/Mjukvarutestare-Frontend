@@ -6,15 +6,28 @@
     <title>Frontend Homepage</title>
   </head>
   <body>
-    <form action="" method="post">
-      <label for="username">UserName:</label>
-      <input type="text" id="username" name="username" required />
-      <label for="password">Password:</label>
-      <input type="password" id="password" name="password" required />
+    <header>
+      <h1>Welcome to Frontend Homepage</h1>
+    </header>
+    <form action="./loginuser.html" method="post">
+      <p>
+        <label for="username">UserName:</label>
+        <input type="text" id="username" name="username" required />
+      </p>
+      <p>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
+      </p>
       <button type="submit">Login User</button>
+      <button type="submit" formaction="./registeruser.html">Register</button>
     </form>
     <div id="errormessages"></div>
     <div id="successmessage"></div>
-    <script src="./script/index-script.js"></script>
+    <footer>
+      <p><sup>&copy;</sup>Frontend Homepage 2024</p>
+      <p>All rights reserved | Powered by Frontend Homepage | Built with love and passion</p>
+      <p>Version 1.0.0 | All trademarks and copyrights are reserved</p>
+      <p>Website built using HTML and JavaScript</p>
+    </footer>
   </body>
 </html>
