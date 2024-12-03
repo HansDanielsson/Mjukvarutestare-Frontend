@@ -47,7 +47,7 @@ application.post('/registeruser', async (req, res) => {
 
   console.log('Ny användare ska skapad: ', data.username, data.password)
   // Spara data till databasen
-  let respUser = await createUser(data.username.trim(), data.password.trim())
+  const respUser = await createUser(data.username.trim(), data.password.trim())
 
   console.log('Ny användare skapad: ', data.username, data.password, respUser)
 
