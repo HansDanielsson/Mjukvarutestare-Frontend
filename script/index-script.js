@@ -13,4 +13,3 @@ const syncDatabase = require('./../Database/dbSync');
   const users = await getAllUsers() // Anropa vår Serviceklass för att hämta alla användare
   console.log('Alla användare:', users.map((u) => u.toJSON()))
 })()
-
