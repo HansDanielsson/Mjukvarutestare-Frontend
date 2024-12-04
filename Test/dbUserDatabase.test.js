@@ -14,7 +14,7 @@ describe('Tester mot databas', () => {
     // Kör funktionen och verifiera
     const result = await createUser('TestUser', 'TestPassword')
     expect(User.create).toHaveBeenCalledTimes(1)
-    expect(User.create).toHaveBeenCalledWith({ username: 'TestUser', password: 'TestPassword'})
+    expect(User.create).toHaveBeenCalledWith({ username: 'TestUser', password: 'TestPassword' })
     expect(result).toEqual(mockUser)
   })
 
