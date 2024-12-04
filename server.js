@@ -28,7 +28,7 @@ application.get('/index.html', (req, res) => {
 
 application.get('/script', (req, res) => {
   console.log('Request to /script')
-  res.sendFile('./script/index-script.js', { root: __dirname })
+  res.sendFile('./Script/index-script.js', { root: __dirname })
 })
 
 application.post('/loginuser', (req, res) => {
