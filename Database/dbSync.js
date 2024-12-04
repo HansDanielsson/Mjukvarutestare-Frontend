@@ -2,6 +2,7 @@ const sequelize = require('./dbConnect')
 
 // Function för att synkronisera modellen
 async function syncDatabase () {
+  console.log('start syncDatabase')
   try {
     await sequelize.authenticate()
     console.log('Sequelize-anslutning lyckades!')

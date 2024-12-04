@@ -10,9 +10,9 @@ async function createUser (userName, password) {
   }
 }
 
-function loginUser (userName, password) {
+function loginUser (username, password) {
   // Implement login logic here
   console.log('User logged in successfully!')
 }
 
-module.export = { createUser, loginUser }
+module.exports = { createUser, loginUser }
