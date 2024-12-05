@@ -1,7 +1,7 @@
 // Fil för attt hantera Express server
 const Express = require('express')
 const bodyParser = require('body-parser')
-const { createUser } = require('./Database/dbUserDatabase')
+const { createUserManager, loginUserManager } = require('./Models/userManager')
 
 const portNr = 5000
 
@@ -24,13 +24,15 @@ application.get('/index.html', (req, res) => {
   res.sendFile('./index.html', { root: __dirname })
 })
 
-application.post('/loginuser', (req, res) => {
-  console.log('Request to /loginuser')
+application.post('/loginuser', async (req, res) => {
   // Denna payload innehåller 2 st attribut, username och password
   const data = req.body
-  console.log(data)
-
-  // res.sendFile('./loginuser.html', { root: __dirname })
+  const result = await loginUserManager(data.username.trim(), data.password.trim())
+  if (result) {
+    res.sendFile('./loginuser.html', { root: __dirname })
+  } else {
+    res.sendFile('./index.html', { root: __dirname })
+  }
 })
 
 application.post('/registeruser', async (req, res) => {
@@ -38,9 +40,7 @@ application.post('/registeruser', async (req, res) => {
   const data = req.body
 
   // Spara data till databasen
-  await createUser(data.username.trim(), data.password.trim())
-
-  console.log('Ny användare skapad: ', data.username, data.password)
+  await createUserManager(data.username.trim(), data.password.trim())
 
   // Return respons till User
   res.redirect('/')
