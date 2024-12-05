@@ -1,11 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login User</title>
-</head>
-<body>
-  <h1>Login User</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login User</title>
+  </head>
+  <body>
+    <header>
+      <h1>Welcome to Login User Page</h1>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+        </ul>
+      </nav>
+      <hr />
+      <form action="/updatepw" method="post">
+        <div>
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <button type="submit">Update password</button>
+      </form>
+    </header>
+  </body>
 </html>
