@@ -45,9 +45,8 @@ application.post('/registeruser', async (req, res) => {
   // Denna payload innehåller 2 st attribut, username och password
   const data = req.body
 
-  console.log('Ny användare ska skapad: ', data.username, data.password)
   // Spara data till databasen
-  const respUser = await createUser(data.username.trim(), data.password.trim())
+  await createUser(data.username.trim(), data.password.trim())
 
   console.log('Ny användare skapad: ', data.username, data.password)
 
