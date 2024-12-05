@@ -7,10 +7,10 @@ const logUser = User
  *
  * @param {String} username - The username of the new user
  * @param {String} password - The password for the new user
- * 
+ *
  */
 
-async function createUserManager(username, password) {
+async function createUserManager (username, password) {
   try {
     await createUser(username, password)
     console.log('User created successfully!', username, password)
@@ -26,7 +26,7 @@ async function createUserManager(username, password) {
  *
  * @returns {Promise<User>} Returns the updated user object
 */
-async function updateUserManager(username, password) {
+async function updateUserManager (username, password) {
   try {
     const user = new User({ username, password })
     await user.save()
@@ -43,7 +43,7 @@ async function updateUserManager(username, password) {
  * @param {String} password - The password for the user to log in
 */
 
-async function loginUserManager(username, password) {
+async function loginUserManager (username, password) {
   // Implement login logic here
   const result = await User.findAll({
     where: { username, password }
