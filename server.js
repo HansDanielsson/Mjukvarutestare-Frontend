@@ -17,18 +17,11 @@ application.listen(portNr, () => {
 
 // Get-request på root-address för att returnera index.html
 application.get('', (req, res) => {
-  console.log('Empty url')
   res.sendFile('./index.html', { root: __dirname })
 })
 
 application.get('/index.html', (req, res) => {
-  console.log('Request to /index.html')
   res.sendFile('./index.html', { root: __dirname })
-})
-
-application.get('/script', (req, res) => {
-  console.log('Request to /script')
-  res.sendFile('./Script/index-script.js', { root: __dirname })
 })
 
 application.post('/loginuser', (req, res) => {
@@ -41,7 +34,6 @@ application.post('/loginuser', (req, res) => {
 })
 
 application.post('/registeruser', async (req, res) => {
-  console.log('Request to /registeruser')
   // Denna payload innehåller 2 st attribut, username och password
   const data = req.body
 
