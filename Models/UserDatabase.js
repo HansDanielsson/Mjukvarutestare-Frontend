@@ -1,29 +1,48 @@
-const User= require('./User')
-
-async function createUser (username, password) {
-  return await User.create({ username, password })
-}
-
-async function getAllUsers () {
-  return await User.findAll()
-}
-
-let saveUserName
+const User = require('./User')
 
 /*
- * This function will update the password of a user with logged in username
+ * This function will select password for username from database
  *
+ * @param {String} username - The username
+ *
+ * Returns the user's password or Error
+ */
+
+async function selectPassword (username) {
+  try {
+    const result = await User.findOne(
+      {
+        where: {
+          username
+        }
+      }
+    )
+    if (result) {
+      return result.password
+    } else {
+      throw new Error('User not found')
+    }
+  } catch (error) {
+    console.error('Error selecting password:', error)
+    throw error
+  }
+}
+
+/*
+ * This function will update the password of a user
+ *
+ * @param {String} username - the username
  * @param {String} password - The new password for the user
  *
  * Returns true if the update was successful
 */
-async function updateUser (inpassword) {
+async function updateUser (username, password) {
   try {
     await User.update(
-      { password: inpassword },
+      { password },
       {
         where: {
-          username: saveUserName
+          username
         }
       }
     )
@@ -34,27 +53,4 @@ async function updateUser (inpassword) {
   }
 }
 
-/*
- * This function will log in a user with the provided username and password
- *
- * @param {String} username - The username of the user to log in
- * @param {String} password - The password for the user to log in
- *
- * Returns true if the user was successfully logged in
-*/
-async function loginUser (username, password) {
-  // Implement login logic here
-  const result = await User.findAll({
-    where: { username, password }
-  })
-  if (result.length === 1) {
-    saveUserName = username // Spara username för nästa request
-    console.log('User logged in successfully!')
-    return true
-  } else {
-    console.log('Invalid username or password')
-    return false
-  }
-}
-
-module.exports = { createUser, getAllUsers, updateUser, loginUser }
+module.exports = { selectPassword, updateUser }

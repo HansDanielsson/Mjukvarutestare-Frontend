@@ -1,7 +1,8 @@
-const { User } = require('./../Models/user')
-const { createUser, getAllUsers } = require('./../Database/dbUserDatabase')
+const User = require('./../Models/User')
+const { getAllUsers, createDbUser } = require('./../Models/UserManager')
 
-jest.mock('./../Models/user')
+jest.mock('./../Models/User.js')
+
 describe('Tester mot databas', () => {
   afterEach(() => {
     jest.clearAllMocks()
@@ -12,7 +13,7 @@ describe('Tester mot databas', () => {
     User.create.mockResolvedValueOnce(mockUser)
 
     // Kör funktionen och verifiera
-    const result = await createUser('TestUser', 'TestPassword')
+    const result = await createDbUser('TestUser', 'TestPassword')
     expect(User.create).toHaveBeenCalledTimes(1)
     expect(User.create).toHaveBeenCalledWith({ username: 'TestUser', password: 'TestPassword' })
     expect(result).toEqual(mockUser)
