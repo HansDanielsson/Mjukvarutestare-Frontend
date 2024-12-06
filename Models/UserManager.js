@@ -9,11 +9,11 @@ const User = require('./User')
  * @param {String} password - The password for the new user
 
 */
-async function createUser(username, password) {
+async function createUser (username, password) {
   return await User.create({ username, password })
 }
 
-async function getAllUsers() {
+async function getAllUsers () {
   return await User.findAll()
 }
 
@@ -27,7 +27,7 @@ async function getAllUsers() {
  * returns true or error
  */
 
-async function createDbUser(username, password) {
+async function createDbUser (username, password) {
   await createUser(username.trim(), password.trim())
   return true
 }
@@ -40,7 +40,7 @@ async function createDbUser(username, password) {
  *
  * Returns true if the user was successfully logged in
 */
-async function loginUser(username, password) {
+async function loginUser (username, password) {
   // Implement login logic here
   const result = await User.findOne(
     {
