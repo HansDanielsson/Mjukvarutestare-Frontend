@@ -40,12 +40,13 @@ async function createDbUser (username, password) {
  *
  * Returns true if the user was successfully logged in
 */
-async function loginUser (username, password) {
+async function loginUser (inusername, inpassword) {
   // Implement login logic here
   const result = await User.findOne(
     {
       where: {
-        username, password
+        username: inusername,
+        password: inpassword
       }
     }
   )

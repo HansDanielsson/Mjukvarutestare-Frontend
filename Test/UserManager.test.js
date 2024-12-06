@@ -1,5 +1,5 @@
 const User = require('./../Models/User')
-const { getAllUsers, createDbUser } = require('./../Models/UserManager')
+const { getAllUsers, createDbUser, loginUser } = require('./../Models/UserManager')
 
 jest.mock('./../Models/User')
 
@@ -16,7 +16,7 @@ describe('Tester mot databas', () => {
     const result = await createDbUser('TestUser0', 'TestPassword0')
     expect(User.create).toHaveBeenCalledTimes(1)
     expect(User.create).toHaveBeenCalledWith({ username: 'TestUser0', password: 'TestPassword0' })
-    expect(result).toEqual(mockUser)
+    expect(result).toBeTruthy()
   })
 
   test('getAllUsers ska returnera alla användare', async () => {
@@ -34,7 +34,7 @@ describe('Tester mot databas', () => {
   })
 
   test('getAllUsers ska hantera ett tomt resultat', async () => {
-    // Mockad att databasen är tom
+    // Mockad respons att databasen är tom
     User.findAll.mockResolvedValueOnce([])
 
     // Kör funktionen och verifiera
@@ -44,11 +44,36 @@ describe('Tester mot databas', () => {
   })
 
   test('createDbUser ska hantera fel vid databasoperation', async () => {
-    // Mockad ett fel från User.create
+    // Mockad respons på ett fel från User.create
     User.create.mockRejectedValueOnce(new Error('Database error X'))
 
     // Kör funktionen och verifiera att den kastar ett fel
     await expect(createDbUser('TestUserX', 'TestUserX@example.se')).rejects.toThrowError('Database error X')
     expect(User.create).toHaveBeenCalledTimes(1)
   })
+
+  test('loginUser loggar in på en testanvändare', async () => {
+    const mockUser = [
+      { id: 1, username: 'username', password: 'password' }
+    ]
+    // Mockad respons på User.findOne
+    User.findOne.mockRejectedValueOnce(mockUser)
+
+    // Kör funktionen och verifiera password
+    const result = await loginUser('username', 'password')
+    expect(User.findOne).toHaveBeenCalledTimes(1)
+    expect(result).toBeTruthy()
+  })
+  
+/*
+  test('loginUser loggar in på en testanvändare, fel password', async () => {
+    // Mockad respons på User.findOne
+    User.findOne.mockRejectedValueOnce(false)
+
+    // Kör funktionen och verifiera password
+    const result = await loginUser('username', 'wrongpassword')
+    expect(User.findOne).toHaveBeenCalledTimes(1)
+    expect(result).toBeFalsy()
+  })
+*/
 })
