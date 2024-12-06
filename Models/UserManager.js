@@ -1,6 +1,6 @@
 const User = require('./User')
 
-let saveUserName
+// let saveUserName
 
 /*
  * This local function will create a new user in the database
@@ -9,11 +9,11 @@ let saveUserName
  * @param {String} password - The password for the new user
 
 */
-async function createUser (username, password) {
+async function createUser(username, password) {
   return await User.create({ username, password })
 }
 
-async function getAllUsers () {
+async function getAllUsers() {
   return await User.findAll()
 }
 
@@ -27,13 +27,9 @@ async function getAllUsers () {
  * returns true or error
  */
 
-async function createDbUser (username, password) {
-  try {
-    await createUser(username.trim(), password.trim())
-    return true
-  } catch (error) {
-    throw error
-  }
+async function createDbUser(username, password) {
+  await createUser(username.trim(), password.trim())
+  return true
 }
 
 /*
@@ -44,7 +40,7 @@ async function createDbUser (username, password) {
  *
  * Returns true if the user was successfully logged in
 */
-async function loginUser (username, password) {
+async function loginUser(username, password) {
   // Implement login logic here
   const result = await User.findOne(
     {
@@ -54,7 +50,7 @@ async function loginUser (username, password) {
     }
   )
   if (result.length === 1) {
-    saveUserName = username // Spara username för nästa request
+    // saveUserName = username // Spara username för nästa request
     console.log('User logged in successfully!')
     return true
   } else {
