@@ -1,7 +1,7 @@
 const User = require('./../Models/User')
 const { getAllUsers, createDbUser } = require('./../Models/UserManager')
 
-jest.mock('./../Models/User.js')
+jest.mock('./../Models/User')
 
 describe('Tester mot databas', () => {
   afterEach(() => {
@@ -9,13 +9,13 @@ describe('Tester mot databas', () => {
   })
 
   test('Skapar en ny användare', async () => {
-    const mockUser = { id: 1, username: 'TestUser', password: 'TestPassword' }
+    const mockUser = true
     User.create.mockResolvedValueOnce(mockUser)
 
     // Kör funktionen och verifiera
-    const result = await createDbUser('TestUser', 'TestPassword')
+    const result = await createDbUser('TestUser0', 'TestPassword0')
     expect(User.create).toHaveBeenCalledTimes(1)
-    expect(User.create).toHaveBeenCalledWith({ username: 'TestUser', password: 'TestPassword' })
+    expect(User.create).toHaveBeenCalledWith({ username: 'TestUser0', password: 'TestPassword0' })
     expect(result).toEqual(mockUser)
   })
 
@@ -43,12 +43,12 @@ describe('Tester mot databas', () => {
     expect(result).toEqual([])
   })
 
-  test('createUser ska hantera fel vid databasoperation', async () => {
+  test('createDbUser ska hantera fel vid databasoperation', async () => {
     // Mockad ett fel från User.create
-    User.create.mockRejectedValueOnce(new Error('Database error'))
+    User.create.mockRejectedValueOnce(new Error('Database error X'))
 
     // Kör funktionen och verifiera att den kastar ett fel
-    await expect(createUser('TestUserX', 'TestUserX@example.se')).rejects.toThrowError('Database error')
+    await expect(createDbUser('TestUserX', 'TestUserX@example.se')).rejects.toThrowError('Database error X')
     expect(User.create).toHaveBeenCalledTimes(1)
   })
 })

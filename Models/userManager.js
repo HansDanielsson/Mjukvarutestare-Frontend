@@ -1,8 +1,9 @@
 const User = require('./User')
+
 let saveUserName
 
 /*
- * This function will create a new user in the database
+ * This local function will create a new user in the database
  *
  * @param {String} username - The username of the new user
  * @param {String} password - The password for the new user
@@ -23,14 +24,15 @@ async function getAllUsers () {
  * @param {String} username - The username of the new user
  * @param {String} password - The password for the new user
  *
+ * returns true or error
  */
 
 async function createDbUser (username, password) {
   try {
     await createUser(username.trim(), password.trim())
-    console.log('User created successfully!', username, password)
+    return true
   } catch (error) {
-    console.error('Error creating user:', error)
+    throw error
   }
 }
 
