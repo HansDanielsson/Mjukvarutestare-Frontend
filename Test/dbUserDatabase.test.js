@@ -1,4 +1,4 @@
-const User = require('./../Models/user')
+const { User } = require('./../Models/user')
 const { createUser, getAllUsers } = require('./../Database/dbUserDatabase')
 
 jest.mock('./../Models/user')

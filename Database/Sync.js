@@ -1,4 +1,4 @@
-const sequelize = require('./dbConnect')
+const sequelize = require('./Connect')
 
 // Function för att synkronisera modellen
 async function syncDatabase () {

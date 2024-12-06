@@ -1,4 +1,4 @@
-const { Sequelize } = require('sequelize')
+const Sequelize = require('sequelize')
 
 // Setup Sequelize
 const sequelize = new Sequelize({

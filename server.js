@@ -1,7 +1,7 @@
 // Fil för attt hantera Express server
 const Express = require('express')
 const bodyParser = require('body-parser')
-const { logUser, createUserManager } = require('./Models/userManager')
+const { createUserManager } = require('./Models/userManager')
 const { updateUser, loginUser } = require('./Models/user')
 
 const portNr = 5000
@@ -47,13 +47,13 @@ application.post('/registeruser', async (req, res) => {
   res.redirect('/')
 })
 
-// PUT-request för att uppdatera en befintlig user
+// POST-request för att uppdatera inloggad user
 
 application.post('/updatepw', async (req, res) => {
   // Denna payload innehåller 1 st attribut, password
   const data = req.body
 
-  const result = await updateUser(logUser.username, data.password.trim())
+  const result = await updateUser(data.password.trim())
 
   if (result) {
     res.status(200).send('User updated successfully')
