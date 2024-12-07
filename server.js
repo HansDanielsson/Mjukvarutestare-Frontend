@@ -29,15 +29,15 @@ application.get('/index.html', (req, res) => {
 application.get('/selectpassword', (req, res) => {
   res.sendFile('./selectpassword.html', { root: __dirname })
 })
-/*
+
 application.post('/selectpassword', async (req, res) => {
   // Denna payload innehåller 1 st attribut, username
   const data = req.body
   const result = await selectPassword(data.username.trim())
   console.log('password = ', result)
-  res.redirect('/selectpassword')
+  res.sendFile('./selectpassword.html', { root: __dirname })
 })
-*/
+
 application.post('/loginuser', async (req, res) => {
   // Denna payload innehåller 2 st attribut, username och password
   const data = req.body

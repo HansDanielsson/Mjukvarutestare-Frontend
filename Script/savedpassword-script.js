@@ -1,7 +1,7 @@
-const { selectPassword } = require('./Models/UserDatabase')
+const { selectPassword } = require('../Models/UserDatabase')
 
 document.getElementById('btnpassword').addEventListener('click', async () => {
-  const username = document.getElementById('username').value;
+  const username = document.getElementById('username').value
   const password = await selectPassword(username)
 
   // Generera meddelandet
