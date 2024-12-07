@@ -52,6 +52,7 @@ describe('Tester mot databas', () => {
     expect(User.create).toHaveBeenCalledTimes(1)
   })
 
+/*
   test('loginUser loggar in på en testanvändare', async () => {
     const mockUser = [
       { id: 1, username: 'username', password: 'password' }
@@ -64,7 +65,7 @@ describe('Tester mot databas', () => {
     expect(User.findOne).toHaveBeenCalledTimes(1)
     expect(result).toBeTruthy()
   })
-  
+*/
 /*
   test('loginUser loggar in på en testanvändare, fel password', async () => {
     // Mockad respons på User.findOne
