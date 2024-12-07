@@ -2,7 +2,7 @@
 const Express = require('express')
 const bodyParser = require('body-parser')
 const { createDbUser,loginUser } = require('./Models/UserManager')
-const { updateUser } = require('./Models/UserDatabase')
+const { selectPassword, updateUser } = require('./Models/UserDatabase')
 
 const portNr = 5000
 let saveUserName
@@ -27,7 +27,15 @@ application.get('/index.html', (req, res) => {
 })
 
 application.get('/selectpassword', (req, res) => {
-  res.sendFile('./registeruser.html', { root: __dirname })
+  res.sendFile('./selectpassword.html', { root: __dirname })
+})
+
+application.post('/selectpassword', async (req, res) => {
+  // Denna payload innehåller 1 st attribut, username
+  const data = req.body
+  const result = await selectPassword(data.username.trim())
+  console.log('password = ', result)
+  res.redirect('/selectpassword')
 })
 
 application.post('/loginuser', async (req, res) => {

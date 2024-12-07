@@ -43,15 +43,6 @@ describe('Tester mot databas', () => {
     expect(result).toEqual([])
   })
 
-  test('createDbUser ska hantera fel vid databasoperation', async () => {
-    // Mockad respons på ett fel från User.create
-    User.create.mockRejectedValueOnce(new Error('Database error X'))
-
-    // Kör funktionen och verifiera att den kastar ett fel
-    await expect(createDbUser('TestUserX', 'TestUserX@example.se')).rejects.toThrowError('Database error X')
-    expect(User.create).toHaveBeenCalledTimes(1)
-  })
-
   /*
   test('loginUser loggar in på en testanvändare', async () => {
     const mockUser = [

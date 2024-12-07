@@ -5,28 +5,22 @@ const User = require('./User')
  *
  * @param {String} username - The username
  *
- * Returns the user's password or Error
+ * Returns the user's password or false
  */
 
 async function selectPassword (username) {
-  try {
-    const result = await User.findOne(
-      {
-        where: {
-          username
-        }
+  const result = await User.findOne(
+    {
+      where: {
+        username
       }
-    )
-    console.log('selectPassword = ', result)
-    if (result) {
-      return result.password
-    } else {
-      throw new Error('User not found')
     }
-  } catch (error) {
-    console.error('Error selecting password:', error)
-    throw error
+  )
+
+  if (result) {
+    return result.password
   }
+  return false
 }
 
 /*
