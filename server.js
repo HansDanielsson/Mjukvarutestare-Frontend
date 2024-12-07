@@ -1,10 +1,11 @@
 // Fil för attt hantera Express server
 const Express = require('express')
 const bodyParser = require('body-parser')
-const { createUserManager } = require('./Models/userManager')
-const { updateUser, loginUser } = require('./Models/user')
+const { createDbUser,loginUser } = require('./Models/UserManager')
+const { updateUser } = require('./Models/UserDatabase')
 
 const portNr = 5000
+let saveUserName
 
 // Konfigurera server med Body-parser
 const application = new Express()
@@ -25,11 +26,16 @@ application.get('/index.html', (req, res) => {
   res.sendFile('./index.html', { root: __dirname })
 })
 
+application.get('/selectpassword', (req, res) => {
+  res.sendFile('./registeruser.html', { root: __dirname })
+})
+
 application.post('/loginuser', async (req, res) => {
   // Denna payload innehåller 2 st attribut, username och password
   const data = req.body
   const result = await loginUser(data.username.trim(), data.password.trim())
   if (result) {
+    saveUserName = data.username.trim()
     res.sendFile('./loginuser.html', { root: __dirname })
   } else {
     res.sendFile('./index.html', { root: __dirname })
@@ -41,8 +47,7 @@ application.post('/registeruser', async (req, res) => {
   const data = req.body
 
   // Spara data till databasen
-  await createUserManager(data.username.trim(), data.password.trim())
-
+  await createDbUser(data.username, data.password)
   // Return respons till User
   res.redirect('/')
 })
@@ -53,8 +58,7 @@ application.post('/updatepw', async (req, res) => {
   // Denna payload innehåller 1 st attribut, password
   const data = req.body
 
-  const result = await updateUser(data.password.trim())
-
+  const result = await updateUser(saveUserName, data.password.trim())
   if (result) {
     res.status(200).send('User updated successfully')
   } else {

@@ -17,6 +17,7 @@ async function selectPassword (username) {
         }
       }
     )
+    console.log('selectPassword = ', result)
     if (result) {
       return result.password
     } else {
@@ -48,7 +49,6 @@ async function updateUser (username, password) {
     )
     return true
   } catch (error) {
-    console.error('Error update user:', error)
     return false
   }
 }
