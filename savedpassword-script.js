@@ -1,4 +1,4 @@
-const { selectPassword } = require('./../Models/UserDatabase')
+const { selectPassword } = require('./Models/UserDatabase')
 
 document.getElementById('btnpassword').addEventListener('click', async () => {
   const username = document.getElementById('username').value;
