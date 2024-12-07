@@ -1,5 +1,5 @@
 const User = require('./../Models/User')
-const { getAllUsers, createDbUser, loginUser } = require('./../Models/UserManager')
+const { getAllUsers, createDbUser } = require('./../Models/UserManager')
 
 jest.mock('./../Models/User')
 

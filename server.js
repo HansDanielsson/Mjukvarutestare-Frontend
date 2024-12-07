@@ -1,7 +1,7 @@
 // Fil för attt hantera Express server
 const Express = require('express')
 const bodyParser = require('body-parser')
-const { createDbUser,loginUser } = require('./Models/UserManager')
+const { createDbUser, loginUser } = require('./Models/UserManager')
 const { selectPassword, updateUser } = require('./Models/UserDatabase')
 
 const portNr = 5000

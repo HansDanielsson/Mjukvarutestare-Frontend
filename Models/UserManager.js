@@ -53,7 +53,7 @@ async function loginUser (username, password) {
       }
     }
   )
-  return !!(result);
+  return !!(result)
 }
 
 module.exports = { getAllUsers, createDbUser, loginUser }

@@ -1,5 +1,5 @@
 const User = require('./../Models/User')
-const { selectPassword, updateUser } = require('./../Models/UserDatabase')
+const { updateUser } = require('./../Models/UserDatabase')
 
 jest.mock('./../Models/User.js')
 
