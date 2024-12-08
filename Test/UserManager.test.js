@@ -19,6 +19,17 @@ describe('Tester mot databas', () => {
     expect(result).toBeTruthy()
   })
 
+  test('Skapa en dublett användare', async () => {
+    const mockUser = true
+    User.create.mockResolvedValueOnce(mockUser)
+
+    // Kör funktionen och verifiera
+    const result = await createDbUser('SammaUserIgen', 'TestPassword')
+    expect(User.create).toHaveBeenCalledTimes(1)
+    expect(User.create).toHaveBeenCalledWith({ username: 'TestUser0', password: 'TestPassword0' })
+    expect(result).toBeFalsy()
+  })
+
   test('getAllUsers ska returnera alla användare', async () => {
     // Mockad respons för User.findAll
     const mockUsers = [

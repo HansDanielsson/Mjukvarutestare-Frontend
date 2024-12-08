@@ -48,10 +48,8 @@ application.post('/vipuser', async (req, res) => {
   const result = await loginUser(data.username.trim(), data.password.trim())
   if (result) {
     saveUserName = data.username.trim()
-    // res.sendFile('./vipuser.html', { root: __dirname })
     res.redirect('/vipuser')
-  }
-  else {
+  } else {
     res.redirect('/')
   }
 })
