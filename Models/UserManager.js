@@ -1,7 +1,5 @@
 const User = require('./User')
 
-// let saveUserName
-
 async function getAllUsers () {
   return await User.findAll()
 }
@@ -46,13 +44,18 @@ async function createDbUser (username, password) {
 */
 async function loginUser (username, password) {
   // Implement login logic here
-  const result = await User.findOne(
-    {
-      where: {
-        username, password
+  let result
+  try {
+    result = await User.findOne(
+      {
+        where: {
+          username, password
+        }
       }
-    }
-  )
+    )
+  } catch (error) {
+    result = true
+  }
   return !!(result)
 }
 

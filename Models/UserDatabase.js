@@ -9,14 +9,18 @@ const User = require('./User')
  */
 
 async function selectPassword (username) {
-  const result = await User.findOne(
-    {
-      where: {
-        username
+  let result = false
+  try {
+    result = await User.findOne(
+      {
+        where: {
+          username
+        }
       }
-    }
-  )
-
+    )
+  } catch (error) {
+    result = false
+  }
   if (result) {
     return result.password
   }

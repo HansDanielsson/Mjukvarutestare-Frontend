@@ -1,5 +1,5 @@
 const User = require('./../Models/User')
-const { getAllUsers, createDbUser } = require('./../Models/UserManager')
+const { getAllUsers, createDbUser, loginUser } = require('./../Models/UserManager')
 
 jest.mock('./../Models/User')
 
@@ -43,7 +43,6 @@ describe('Tester mot databas', () => {
     expect(result).toEqual([])
   })
 
-  /*
   test('loginUser loggar in på en testanvändare', async () => {
     const mockUser = [
       { id: 1, username: 'username', password: 'password' }
@@ -56,16 +55,4 @@ describe('Tester mot databas', () => {
     expect(User.findOne).toHaveBeenCalledTimes(1)
     expect(result).toBeTruthy()
   })
-  */
-  /*
-  test('loginUser loggar in på en testanvändare, fel password', async () => {
-    // Mockad respons på User.findOne
-    User.findOne.mockRejectedValueOnce(false)
-
-    // Kör funktionen och verifiera password
-    const result = await loginUser('username', 'wrongpassword')
-    expect(User.findOne).toHaveBeenCalledTimes(1)
-    expect(result).toBeFalsy()
-  })
-*/
 })

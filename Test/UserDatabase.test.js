@@ -1,5 +1,5 @@
 const User = require('./../Models/User')
-const { updateUser } = require('./../Models/UserDatabase')
+const { selectPassword, updateUser } = require('./../Models/UserDatabase')
 
 jest.mock('./../Models/User.js')
 
@@ -8,30 +8,20 @@ describe('Tester mot selectPassword och updateUser', () => {
     jest.clearAllMocks()
   })
 
-  /*
-    test('Test user password ok', async () => {
-    const mockPassword = 'password'
-    const mockUsers = [
-      { id: 1, username: 'username', password: mockPassword }
-    ]
-    User.findOne.mockResolvedValueOnce(mockUsers)
+  test('Get password to NoUserName', async () => {
+    User.findOne.mockResolvedValueOnce(false)
 
     // Kör funktionen och verifiera
-    const result = await selectPassword('username')
+    const result = await selectPassword('NoUserName')
     expect(User.findOne).toHaveBeenCalledTimes(1)
-    expect(result).toBe(mockPassword)
+    expect(result).toBeFalsy()
   })
-  */
 
   test('Update user password', async () => {
-    const mockPassword = 'new_password'
-    const mockUsers = [
-      { id: 1, username: 'username', password: 'old_password' }
-    ]
-    User.update.mockResolvedValueOnce(mockUsers)
+    User.update.mockResolvedValueOnce(true)
 
     // Kör funktionen och verifiera
-    const result = await updateUser('username', mockPassword)
+    const result = await updateUser('username', 'NewPassword')
     expect(User.update).toHaveBeenCalledTimes(1)
     expect(result).toBeTruthy()
   })
