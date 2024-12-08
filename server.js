@@ -38,18 +38,18 @@ application.post('/selectpassword', async (req, res) => {
   res.sendFile('./selectpassword.html', { root: __dirname })
 })
 
-application.get('/loginuser', (req, res) => {
-  res.sendFile('./loginuser.html', { root: __dirname })
+application.get('/vipuser', (req, res) => {
+  res.sendFile('./vipuser.html', { root: __dirname })
 })
 
-application.post('/loginuser', async (req, res) => {
+application.post('/vipuser', async (req, res) => {
   // Denna payload innehåller 2 st attribut, username och password
   const data = req.body
   const result = await loginUser(data.username.trim(), data.password.trim())
   if (result) {
     saveUserName = data.username.trim()
-    // res.sendFile('./loginuser.html', { root: __dirname })
-    res.redirect('/loginuser')
+    // res.sendFile('./vipuser.html', { root: __dirname })
+    res.redirect('/vipuser')
   }
   else {
     res.redirect('/')
@@ -68,7 +68,7 @@ application.post('/registeruser', async (req, res) => {
 
 // Get-request för att redirecta till loginuser-sidan
 application.get('/updatepw', (req, res) => {
-  res.redirect('/loginuser')
+  res.redirect('/vipuser')
 })
 
 // POST-request för att uppdatera user med password
