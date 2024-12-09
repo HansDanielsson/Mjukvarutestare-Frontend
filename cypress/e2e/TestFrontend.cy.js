@@ -1,37 +1,63 @@
 describe('Tester mot hemsidan', () => {
   beforeEach(() => {
     cy.visit('/') // Öppna hemsidan
-  })
-  it('register User', () => {
     cy.wait(1000)
     cy.get('h1').should('contains.text', 'Welcome to Frontend Homepage')
     cy.wait(1000)
-    cy.get('#username').type('NewUsername')
-    cy.wait(1000)
-    cy.get('#password').type('NewPassword')
-    cy.wait(1000)
-    cy.get('#register').click()
-    cy.wait(1000)
   })
 
-  it('Loggin User', () => {
+  it('Register User X', () => {
+    cy.get('input[type="text"]').type('NewUsername')
+    cy.wait(1000)
+    cy.get('input[type="password"]').type('NewPassword')
+    cy.wait(1000)
+    cy.get('button').contains('Register User').click()
+  })
+
+  it('Loggin User X -> Y', () => {
     // Logga in med NewUsername och NewPassword
+    cy.get('input[type="text"]').type('NewUsername')
     cy.wait(1000)
-    cy.get('#username').type('NewUsername')
+    cy.get('input[type="password"]').type('NewPassword')
     cy.wait(1000)
-    cy.get('#password').type('NewPassword')
+    cy.get('button').contains('Login User').click()
     cy.wait(1000)
-    cy.get('#login').click()
-    cy.wait(1000)
+    // Verifiera att lösenordet fungerar
     cy.get('h1').should('contains.text', 'Welcome to Vip User Page')
     cy.wait(1000)
-    // Verifiera att lösenordet visas
-    cy.get('#savedpassword').should('contain.text', 'NewUsername har password: NewPassword')
+    cy.get('input[type="password"]').type('ModifyPassword')
     cy.wait(1000)
-    // Logga ut
-    cy.get('#logout').click()
+    cy.get('button').contains('Update password').click()
+    // Antagan att ändra password fungerade bra
+  })
+
+  it('Loggin User Y -> X', () => {
+    // Logga in med NewUsername och NewPassword
+    cy.get('input[type="text"]').type('NewUsername')
     cy.wait(1000)
-    // Verifiera att logga ut lyckats
-    cy.get('#login').should('contain.text', 'Logga in')
+    cy.get('input[type="password"]').type('ModifyPassword')
+    cy.wait(1000)
+    cy.get('button').contains('Login User').click()
+    cy.wait(1000)
+    // Verifiera att lösenordet fungerar
+    cy.get('h1').should('contains.text', 'Welcome to Vip User Page')
+    cy.wait(1000)
+    cy.get('input[type="password"]').type('NewPassword')
+    cy.wait(1000)
+    cy.get('button').contains('Update password').click()
+    // Antagan att ändra password fungerade bra
+  })
+
+  it('Loggin User X', () => {
+    // Logga in med NewUsername och NewPassword
+    cy.get('input[type="text"]').type('NewUsername')
+    cy.wait(1000)
+    cy.get('input[type="password"]').type('NewPassword')
+    cy.wait(1000)
+    cy.get('button').contains('Login User').click()
+    cy.wait(1000)
+    // Verifiera att lösenordet fungerar
+    cy.get('h1').should('contains.text', 'Welcome to Vip User Page')
+    // Antagan att password fungerade bra
   })
 })
