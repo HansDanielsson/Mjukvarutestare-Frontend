@@ -1,6 +1,6 @@
 # Mjukvarutestare-Frontend
 Workspace to Mjukvarutestare-JavaScript
-
+## Project Description
 This project is made with JavaScript and HTML to simulate a simple frontend home page with login and password authentication.
 It includes an database to store the login and password information in raw data, with this db schema:
 ### Database schema
@@ -36,4 +36,4 @@ And for UX testing with Cypress it simulate this situations:
 3) Login with user and password from 2) with new password and do change back password
 4) Login with user and password from 3) to test the password from 1)
 
-I have not ability to test UX on Github because it used an server and database connection on localhost
+I have not ability to test UX on GitHub because it used an server and database connection on localhost
