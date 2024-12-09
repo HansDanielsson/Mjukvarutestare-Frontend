@@ -28,9 +28,11 @@ All files         |     100 |      100 |     100 |     100 |
   UserDatabase.js |     100 |      100 |     100 |     100 |                   
   UserManager.js  |     100 |      100 |     100 |     100 |                   
 ------------------|---------|----------|---------|---------|-------------------
+Test Suites: 2 passed, 2 total
+Tests:       10 passed, 10 total
 ```
 ### User Experience
-And for UX testing with Cypress it simulate this situations:
+And for UX testing with Cypress, simulate this situations:
 1) Registration of an new user with password
 2) Login with user and password from 1), do change password
 3) Login with user and password from 2) with new password and do change back password
