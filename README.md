@@ -4,7 +4,7 @@ Workspace to Mjukvarutestare-JavaScript
 This project is made with JavaScript and HTML to simulate a simple frontend home page with login and password authentication.
 It includes an database to store the login and password information in raw data, with this db schema:
 ### Database schema
-```
+```text
 Tables: users
 Columns:
 id        - int PK, AutoIncrement,
@@ -14,7 +14,7 @@ password  - string
 
 For testing it exist an coverage report with the following results:
 ### Coverage report
-```
+```text
 PASS Test/UserManager.test.js
 PASS Test/UserDatabase.test.js
 ------------------|---------|----------|---------|---------|-------------------
