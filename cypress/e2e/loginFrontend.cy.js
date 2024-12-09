@@ -1,6 +1,6 @@
 describe('Tester mot hemsidan', () => {
   beforeEach(() => {
-    cy.visit('/')   // Öppna hemsidan
+    cy.visit('/') // Öppna hemsidan
   })
   it('register User', () => {
     cy.wait(1000)
