@@ -28,7 +28,7 @@ describe('Tester mot hemsidan', () => {
   })
 
   it('Loggin User Y -> X', () => {
-    // Logga in med NewUsername och NewPassword
+    // Logga in med NewUsername och ModifyPassword
     cy.get('input[type="text"]').type('NewUsername')
     cy.get('input[type="password"]').type('ModifyPassword')
     cy.get('button').contains('Login User').click()
@@ -44,7 +44,6 @@ describe('Tester mot hemsidan', () => {
     cy.get('input[type="text"]').type('NewUsername')
     cy.get('input[type="password"]').type('NewPassword')
     cy.get('button').contains('Login User').click()
-    cy.wait(1000)
     // Verifiera att lösenordet fungerar
     cy.get('h1').should('contains.text', 'Welcome to Vip User Page')
     // Antagan att password fungerade bra

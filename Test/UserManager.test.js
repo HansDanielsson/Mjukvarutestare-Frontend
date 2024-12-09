@@ -1,7 +1,7 @@
 const User = require('./../Models/User')
 const { getAllUsers, createDbUser, loginUser } = require('./../Models/UserManager')
 
-jest.mock('./../Models/User')
+jest.mock('./../Models/User.js')
 
 describe('Tester mot databas', () => {
   afterEach(() => {
