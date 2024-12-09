@@ -4,13 +4,12 @@ Workspace to Mjukvarutestare-JavaScript
 This project is made with JavaScript and HTML to simulate a simple frontend home page with login and password authentication.
 It includes an database to store the login and password information in raw data, with this db schemas:
 Tables: users
-Columns:
-  id - int PK, AutoIncrement
-  username - string, unique
-  password - string
+Columns: id - int PK, AutoIncrement, username - string, unique, password - string
 
 For testing it exist an coverage report with the following results:
+### Coverage report
 PASS Test/UserManager.test.js
+PASS Test/UserDatabase.test.js
 ------------------|---------|----------|---------|---------|-------------------
 File              | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ------------------|---------|----------|---------|---------|-------------------
@@ -22,7 +21,7 @@ All files         |     100 |      100 |     100 |     100 |
   UserDatabase.js |     100 |      100 |     100 |     100 |                   
   UserManager.js  |     100 |      100 |     100 |     100 |                   
 ------------------|---------|----------|---------|---------|-------------------
-
+### User Experience
 And for UX testing with Cypress it simulate this situations:
 1) registration of an new user with password
 2) Login with user and password from 1), do change password
