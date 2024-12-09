@@ -35,3 +35,5 @@ And for UX testing with Cypress it simulate this situations:
 2) Login with user and password from 1), do change password
 3) Login with user and password from 2) with new password and do change back password
 4) Login with user and password from 3) to test the password from 1)
+
+I have not ability to test UX on Github because it used an server and database connection on localhost
