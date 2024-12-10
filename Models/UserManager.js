@@ -1,5 +1,4 @@
 const User = require('./User')
-const syncDatabase = require('./../Database/Sync')
 
 async function getAllUsers () {
   return await User.findAll()
@@ -59,9 +58,5 @@ async function loginUser (username, password) {
   }
   return !!(result)
 }
-
-(async () => {
-  await syncDatabase()
-})()
 
 module.exports = { getAllUsers, createDbUser, loginUser }
