@@ -1,7 +1,7 @@
 const User = require('./../Models/User')
 const { selectPassword, updateUser } = require('./../Models/UserDatabase')
 
-jest.mock('./../Models/User.js')
+jest.mock('./../Models/User')
 
 describe('Tester mot selectPassword och updateUser', () => {
   afterEach(() => {
